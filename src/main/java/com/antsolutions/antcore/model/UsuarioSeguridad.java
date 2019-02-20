@@ -6,7 +6,6 @@
 package com.antsolutions.antcore.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,11 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -55,8 +52,6 @@ public class UsuarioSeguridad implements Serializable {
     @Size(max = 50)
     @Column(name = "usuarioPassword")
     private String usuarioPassword;
-    @OneToMany(mappedBy = "idUsuario")
-    private Collection<UsuarioGrupoSeguridad> usuarioGrupoSeguridadCollection;
 
     public UsuarioSeguridad() {
     }
@@ -103,15 +98,6 @@ public class UsuarioSeguridad implements Serializable {
 
     public void setUsuarioPassword(String usuarioPassword) {
         this.usuarioPassword = usuarioPassword;
-    }
-
-    @XmlTransient
-    public Collection<UsuarioGrupoSeguridad> getUsuarioGrupoSeguridadCollection() {
-        return usuarioGrupoSeguridadCollection;
-    }
-
-    public void setUsuarioGrupoSeguridadCollection(Collection<UsuarioGrupoSeguridad> usuarioGrupoSeguridadCollection) {
-        this.usuarioGrupoSeguridadCollection = usuarioGrupoSeguridadCollection;
     }
 
     @Override
