@@ -6,12 +6,13 @@
 package com.antsolutions.antcore.ejb;
 
 import com.antsolutions.antcore.model.Departamento;
+import com.antsolutions.antcore.model.Pais;
 import java.util.List;
 import javax.ejb.Local;
 
 /**
  *
- * @author rrami
+ * @author RAREcheverria
  */
 @Local
 public interface DepartamentoFacadeLocal {
@@ -29,5 +30,7 @@ public interface DepartamentoFacadeLocal {
     List<Departamento> findRange(int[] range);
 
     int count();
+    
+    List<Departamento> findByPais(Pais idPais);
     
 }

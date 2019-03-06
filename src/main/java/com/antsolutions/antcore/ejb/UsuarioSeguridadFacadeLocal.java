@@ -30,4 +30,5 @@ public interface UsuarioSeguridadFacadeLocal {
 
     int count();
     
+    UsuarioSeguridad iniciarSesion(UsuarioSeguridad us);
 }

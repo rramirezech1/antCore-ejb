@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -23,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author rrami
+ * @author RAREcheverria
  */
 @Entity
 @Table(name = "departamento")
@@ -31,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Departamento.findAll", query = "SELECT d FROM Departamento d")
     , @NamedQuery(name = "Departamento.findByIdDepartamento", query = "SELECT d FROM Departamento d WHERE d.idDepartamento = :idDepartamento")
+    , @NamedQuery(name = "Departamento.findByIdPais", query = "SELECT d FROM Departamento d WHERE d.idPais = :idPais")    
     , @NamedQuery(name = "Departamento.findByNombreDepartamento", query = "SELECT d FROM Departamento d WHERE d.nombreDepartamento = :nombreDepartamento")})
 public class Departamento implements Serializable {
 
@@ -45,6 +48,9 @@ public class Departamento implements Serializable {
     private String nombreDepartamento;
     @OneToMany(mappedBy = "idDepartamento")
     private Collection<Municipio> municipioCollection;
+    @JoinColumn(name = "idPais", referencedColumnName = "idPais")
+    @ManyToOne
+    private Pais idPais;
 
     public Departamento() {
     }
@@ -76,6 +82,14 @@ public class Departamento implements Serializable {
 
     public void setMunicipioCollection(Collection<Municipio> municipioCollection) {
         this.municipioCollection = municipioCollection;
+    }
+
+    public Pais getIdPais() {
+        return idPais;
+    }
+
+    public void setIdPais(Pais idPais) {
+        this.idPais = idPais;
     }
 
     @Override

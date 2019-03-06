@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -20,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author rrami
+ * @author RAREcheverria
  */
 @Entity
 @Table(name = "cliente")
@@ -31,7 +33,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Cliente.findByNombreCliente", query = "SELECT c FROM Cliente c WHERE c.nombreCliente = :nombreCliente")
     , @NamedQuery(name = "Cliente.findByApellidoCliente", query = "SELECT c FROM Cliente c WHERE c.apellidoCliente = :apellidoCliente")
     , @NamedQuery(name = "Cliente.findByDireccionCliente", query = "SELECT c FROM Cliente c WHERE c.direccionCliente = :direccionCliente")
-    , @NamedQuery(name = "Cliente.findByIdMuncipio", query = "SELECT c FROM Cliente c WHERE c.idMuncipio = :idMuncipio")})
+    , @NamedQuery(name = "Cliente.findByTelCliente", query = "SELECT c FROM Cliente c WHERE c.telCliente = :telCliente")
+    , @NamedQuery(name = "Cliente.findByEMailCliente", query = "SELECT c FROM Cliente c WHERE c.eMailCliente = :eMailCliente")
+    , @NamedQuery(name = "Cliente.findByNitCliente", query = "SELECT c FROM Cliente c WHERE c.nitCliente = :nitCliente")
+    , @NamedQuery(name = "Cliente.findByRazonSocial", query = "SELECT c FROM Cliente c WHERE c.razonSocial = :razonSocial")
+    , @NamedQuery(name = "Cliente.findByNrcCliente", query = "SELECT c FROM Cliente c WHERE c.nrcCliente = :nrcCliente")
+    , @NamedQuery(name = "Cliente.findByGiroCliente", query = "SELECT c FROM Cliente c WHERE c.giroCliente = :giroCliente")})
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,8 +56,30 @@ public class Cliente implements Serializable {
     @Size(max = 250)
     @Column(name = "direccionCliente")
     private String direccionCliente;
-    @Column(name = "idMuncipio")
-    private Integer idMuncipio;
+    @Size(max = 50)
+    @Column(name = "telCliente")
+    private String telCliente;
+    @Size(max = 75)
+    @Column(name = "eMailCliente")
+    private String eMailCliente;
+    @Size(max = 15)
+    @Column(name = "nitCliente")
+    private String nitCliente;
+    @Size(max = 250)
+    @Column(name = "razonSocial")
+    private String razonSocial;
+    @Size(max = 10)
+    @Column(name = "nrcCliente")
+    private String nrcCliente;
+    @Size(max = 250)
+    @Column(name = "giroCliente")
+    private String giroCliente;
+    @JoinColumn(name = "idMuncipio", referencedColumnName = "idMunicipio")
+    @ManyToOne
+    private Municipio idMuncipio;
+    @JoinColumn(name = "idPais", referencedColumnName = "idPais")
+    @ManyToOne
+    private Pais idPais;
 
     public Cliente() {
     }
@@ -91,12 +120,68 @@ public class Cliente implements Serializable {
         this.direccionCliente = direccionCliente;
     }
 
-    public Integer getIdMuncipio() {
+    public String getTelCliente() {
+        return telCliente;
+    }
+
+    public void setTelCliente(String telCliente) {
+        this.telCliente = telCliente;
+    }
+
+    public String getEMailCliente() {
+        return eMailCliente;
+    }
+
+    public void setEMailCliente(String eMailCliente) {
+        this.eMailCliente = eMailCliente;
+    }
+
+    public String getNitCliente() {
+        return nitCliente;
+    }
+
+    public void setNitCliente(String nitCliente) {
+        this.nitCliente = nitCliente;
+    }
+
+    public String getRazonSocial() {
+        return razonSocial;
+    }
+
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
+    }
+
+    public String getNrcCliente() {
+        return nrcCliente;
+    }
+
+    public void setNrcCliente(String nrcCliente) {
+        this.nrcCliente = nrcCliente;
+    }
+
+    public String getGiroCliente() {
+        return giroCliente;
+    }
+
+    public void setGiroCliente(String giroCliente) {
+        this.giroCliente = giroCliente;
+    }
+
+    public Municipio getIdMuncipio() {
         return idMuncipio;
     }
 
-    public void setIdMuncipio(Integer idMuncipio) {
+    public void setIdMuncipio(Municipio idMuncipio) {
         this.idMuncipio = idMuncipio;
+    }
+
+    public Pais getIdPais() {
+        return idPais;
+    }
+
+    public void setIdPais(Pais idPais) {
+        this.idPais = idPais;
     }
 
     @Override
