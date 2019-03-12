@@ -177,6 +177,9 @@ public class Cliente implements Serializable {
     }
 
     public Pais getIdPais() {
+        if(idPais == null){
+            idPais = new Pais();
+        }
         return idPais;
     }
 
