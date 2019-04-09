@@ -6,9 +6,13 @@
 package com.antsolutions.antcore.ejb;
 
 import com.antsolutions.antcore.model.Municipio;
+import com.antsolutions.antcore.model.Departamento;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 
 /**
  *
@@ -27,6 +31,14 @@ public class MunicipioFacade extends AbstractFacade<Municipio> implements Munici
 
     public MunicipioFacade() {
         super(Municipio.class);
+    }
+    
+     @Override
+    public List<Municipio> findByDepartamento(Departamento idDepartamento) {
+        Query q = em.createNamedQuery("Departamento.findByIdDepartamento");
+        q.setParameter("idDepartamento", idDepartamento);
+        
+        return q.getResultList();
     }
     
 }

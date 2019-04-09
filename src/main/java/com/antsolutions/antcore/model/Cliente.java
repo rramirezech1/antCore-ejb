@@ -74,6 +74,9 @@ public class Cliente implements Serializable {
     @Size(max = 250)
     @Column(name = "giroCliente")
     private String giroCliente;
+    @JoinColumn(name = "idDepartamento", referencedColumnName = "idDepartamento")
+    @ManyToOne
+    private Departamento idDepartamento;
     @JoinColumn(name = "idMuncipio", referencedColumnName = "idMunicipio")
     @ManyToOne
     private Municipio idMuncipio;
@@ -185,6 +188,22 @@ public class Cliente implements Serializable {
 
     public void setIdPais(Pais idPais) {
         this.idPais = idPais;
+    }
+
+    public String geteMailCliente() {
+        return eMailCliente;
+    }
+
+    public void seteMailCliente(String eMailCliente) {
+        this.eMailCliente = eMailCliente;
+    }
+
+    public Departamento getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(Departamento idDepartamento) {
+        this.idDepartamento = idDepartamento;
     }
 
     @Override

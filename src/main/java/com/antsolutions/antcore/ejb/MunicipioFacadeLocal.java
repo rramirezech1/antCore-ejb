@@ -5,6 +5,7 @@
  */
 package com.antsolutions.antcore.ejb;
 
+import com.antsolutions.antcore.model.Departamento;
 import com.antsolutions.antcore.model.Municipio;
 import java.util.List;
 import javax.ejb.Local;
@@ -27,6 +28,8 @@ public interface MunicipioFacadeLocal {
     List<Municipio> findAll();
 
     List<Municipio> findRange(int[] range);
+    
+    List<Municipio> findByDepartamento(Departamento idDepartamento);
 
     int count();
     
