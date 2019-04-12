@@ -77,9 +77,9 @@ public class Cliente implements Serializable {
     @JoinColumn(name = "idDepartamento", referencedColumnName = "idDepartamento")
     @ManyToOne
     private Departamento idDepartamento;
-    @JoinColumn(name = "idMuncipio", referencedColumnName = "idMunicipio")
+    @JoinColumn(name = "idMunicipio", referencedColumnName = "idMunicipio")
     @ManyToOne
-    private Municipio idMuncipio;
+    private Municipio idMunicipio;
     @JoinColumn(name = "idPais", referencedColumnName = "idPais")
     @ManyToOne
     private Pais idPais;
@@ -172,11 +172,14 @@ public class Cliente implements Serializable {
     }
 
     public Municipio getIdMuncipio() {
-        return idMuncipio;
+         if(idMunicipio == null){
+            idMunicipio = new Municipio();
+        }
+        return idMunicipio;
     }
 
-    public void setIdMuncipio(Municipio idMuncipio) {
-        this.idMuncipio = idMuncipio;
+    public void setIdMunicipio(Municipio idMunicipio) {
+        this.idMunicipio = idMunicipio;
     }
 
     public Pais getIdPais() {
@@ -199,6 +202,9 @@ public class Cliente implements Serializable {
     }
 
     public Departamento getIdDepartamento() {
+        if(idDepartamento == null){
+            idDepartamento = new Departamento();
+        }
         return idDepartamento;
     }
 

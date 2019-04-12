@@ -60,6 +60,9 @@ public class UsuarioGrupoSeguridad implements Serializable {
     }
 
     public GrupoSeguridad getIdGrupo() {
+        if(idGrupo == null){
+            idGrupo = new GrupoSeguridad();
+        }
         return idGrupo;
     }
 
@@ -68,6 +71,9 @@ public class UsuarioGrupoSeguridad implements Serializable {
     }
 
     public UsuarioSeguridad getIdUsuario() {
+        if(idUsuario == null){
+            idUsuario = new UsuarioSeguridad();
+        }
         return idUsuario;
     }
 
