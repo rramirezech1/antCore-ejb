@@ -171,7 +171,7 @@ public class Cliente implements Serializable {
         this.giroCliente = giroCliente;
     }
 
-    public Municipio getIdMuncipio() {
+    public Municipio getIdMunicipio() {
          if(idMunicipio == null){
             idMunicipio = new Municipio();
         }
