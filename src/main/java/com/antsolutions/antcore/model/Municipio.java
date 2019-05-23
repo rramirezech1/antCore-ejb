@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Municipio.findByNombreMunicipio", query = "SELECT m FROM Municipio m WHERE m.nombreMunicipio = :nombreMunicipio")})
 public class Municipio implements Serializable {
 
-    @OneToMany(mappedBy = "idMuncipio")
+    @OneToMany(mappedBy = "idMunicipio")
     private Collection<Cliente> clienteCollection;
 
     private static final long serialVersionUID = 1L;
